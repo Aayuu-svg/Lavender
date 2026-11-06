@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#241b3a">
+<title>A little lavender for you 💜</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; overflow: hidden; color: #fff8ff;
+    font-family: Georgia, "Times New Roman", serif;
+    background: radial-gradient(ellipse at 50% 75%, #55416e 0%, #302543 48%, #1c192d 100%);
+  }
+  .stars, .stars:before, .stars:after {
+    position: absolute; inset: 0; content: ""; pointer-events: none;
+    background-image: radial-gradient(2px 2px at 12% 22%, #fff9 50%, transparent 60%),
+      radial-gradient(1px 1px at 75% 18%, #fff9 50%, transparent 60%),
+      radial-gradient(2px 2px at 88% 48%, #fff8 50%, transparent 60%),
+      radial-gradient(1px 1px at 30% 61%, #fff8 50%, transparent 60%),
+      radial-gradient(1px 1px at 58% 35%, #fff9 50%, transparent 60%);
+    animation: twinkle 4s ease-in-out infinite alternate;
+  }
+  .stars:before { transform: translate(18px, 25px); opacity: .45; animation-delay: -2s; }
+  @keyframes twinkle { to { opacity: .35; } }
+  main { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 26px 18px; text-align: center; }
+  .eyebrow { color: #d9c4ef; letter-spacing: .22em; text-transform: uppercase; font: 11px Arial, sans-serif; margin-bottom: 12px; }
+  h1 { font-size: clamp(30px, 7vw, 54px); font-weight: 400; line-height: 1.08; margin: 0; text-shadow: 0 3px 25px #c4a1e755; }
+  .sub { color: #e0d4e9; font-size: 16px; margin: 15px 0 0; }
+  .garden { width: min(580px, 95vw); height: min(390px, 46vh); min-height: 270px; position: relative; margin: 8px auto 0; }
+  .ground { position: absolute; bottom: 5%; left: 5%; width: 90%; height: 22px; border-radius: 50%; background: #17152688; filter: blur(8px); }
+  .flower { position: absolute; bottom: 7%; width: 5px; height: 0; border-radius: 5px; background: linear-gradient(#8fbd83, #477c68); transform-origin: bottom; transition: height 1.35s cubic-bezier(.2,.8,.2,1); }
+  .flower.grown { height: var(--stem); }
+  .flower:before, .flower:after { content:""; position:absolute; width: 35px; height: 13px; background: #6f9e78; border-radius: 100% 0 100% 0; opacity: 0; transition: opacity .6s 1s; }
+  .flower:before { left: -31px; top: 56%; transform: rotate(18deg); }
+  .flower:after { left: 1px; top: 72%; transform: rotate(72deg) scaleX(-1); }
+  .flower.grown:before, .flower.grown:after { opacity: .95; }
+  .spike { position: absolute; left: 50%; top: -5px; transform: translateX(-50%) scaleY(0); transform-origin: bottom; width: 24px; height: 74px; transition: transform .8s 1.05s cubic-bezier(.2,.8,.2,1); }
+  .grown .spike { transform: translateX(-50%) scaleY(1); }
+  .bud { position:absolute; width: 10px; height: 16px; border-radius: 70% 70% 45% 45%; background: linear-gradient(135deg,#e4c8ff,#9b70c5 75%); box-shadow: 0 0 9px #c99cfb66; }
+  .bud:nth-child(1) { left: 7px; top: 0; }
+  .bud:nth-child(2) { left: 0; top: 12px; transform: rotate(-22deg); }
+  .bud:nth-child(3) { left: 13px; top: 15px; transform: rotate(22deg); }
+  .bud:nth-child(4) { left: 5px; top: 27px; transform: rotate(-10deg); }
+  .bud:nth-child(5) { left: 14px; top: 36px; transform: rotate(18deg); }
+  .bud:nth-child(6) { left: 2px; top: 45px; transform: rotate(-18deg); }
+  .bud:nth-child(7) { left: 10px; top: 56px; transform: rotate(12deg); }
+  .message { opacity: 0; transform: translateY(12px); transition: .9s ease; margin-top: -5px; }
+  .message.show { opacity: 1; transform: translateY(0); }
+  .message h2 { font-size: clamp(25px, 6vw, 42px); font-weight: 400; margin: 0; color: #f0dfff; }
+  .message p { font-size: 16px; line-height: 1.6; color: #e4d9eb; margin: 12px auto 0; max-width: 390px; }
+  button { border: 1px solid #d9bff0aa; color: #fff; background: #9c78b844; border-radius: 999px; padding: 13px 25px; font: 14px Arial, sans-serif; letter-spacing: .04em; cursor: pointer; backdrop-filter: blur(8px); box-shadow: 0 8px 30px #120d2080; transition: .25s; }
+  button:hover { background: #b28bd966; transform: translateY(-2px); }
+  button:disabled { opacity: .65; cursor: default; transform: none; }
+  .hint { font: 11px Arial, sans-serif; color: #cbbad8; margin-top: 12px; letter-spacing: .08em; }
+  .heart { position: absolute; bottom: -20px; color: #e9c9ff; opacity: 0; animation: float 7s linear infinite; pointer-events:none; }
+  @keyframes float { 10% { opacity:.7 } 100% { transform: translateY(-110vh) rotate(35deg); opacity:0 } }
+  @media (max-height: 650px) { .garden { height: 34vh; min-height: 190px; } .sub { margin-top: 8px; } }
+</style>
+</head>
+<body>
+<div class="stars"></div>
+<main>
+  <div class="eyebrow">a tiny garden, just for you</div>
+  <h1>Some flowers<br>for my favourite person.</h1>
+  <p class="sub">I thought your day could use a little lavender. 💜</p>
+  <div class="garden" id="garden" aria-label="An illustrated lavender garden">
+    <div class="ground"></div>
+  </div>
+  <button id="bloom">Make them bloom ✿</button>
+  <div class="hint" id="hint">a little tap, a little magic</div>
+  <section class="message" id="message" aria-live="polite">
+    <h2>Happy 2 Months of Our<br>Relationship, Darlin' ♡</h2>
+    <p>Two months of you, and somehow the world feels a little softer. Here's a little garden, blooming just for you. 💜</p>
+  </section>
+</main>
+<script>
+const garden = document.getElementById('garden');
+const button = document.getElementById('bloom');
+const message = document.getElementById('message');
+const hint = document.getElementById('hint');
+const positions = [
+  [17, 58, 155], [29, 77, 205], [41, 64, 175],
+  [53, 82, 220], [64, 62, 165], [75, 76, 195], [85, 55, 145]
+];
+positions.forEach(([x, stem, delay], i) => {
+  const flower = document.createElement('div');
+  flower.className = 'flower';
+  flower.style.left = x + '%';
+  flower.style.setProperty('--stem', stem + 'px');
+  flower.style.transitionDelay = (i * 100) + 'ms';
+  const spike = document.createElement('div');
+  spike.className = 'spike';
+  for (let j = 0; j < 7; j++) {
+    const bud = document.createElement('i');
+    bud.className = 'bud';
+    spike.appendChild(bud);
+  }
+  flower.appendChild(spike);
+  garden.appendChild(flower);
+});
+let bloomed = false;
+button.addEventListener('click', () => {
+  if (bloomed) {
+    document.querySelectorAll('.flower').forEach(f => f.classList.remove('grown'));
+    message.classList.remove('show');
+    button.textContent = 'Make them bloom ✿';
+    hint.textContent = 'a little tap, a little magic';
+    bloomed = false;
+    return;
+  }
+  bloomed = true;
+  document.querySelectorAll('.flower').forEach((f, i) => {
+    setTimeout(() => f.classList.add('grown'), i * 170);
+  });
+  button.disabled = true;
+  button.textContent = 'Growing your garden…';
+  hint.textContent = 'look at them bloom ♡';
+  setTimeout(() => {
+    message.classList.add('show');
+    button.disabled = false;
+    button.textContent = 'Let them bloom again ↻';
+    for (let i = 0; i < 9; i++) {
+      setTimeout(() => {
+        const heart = document.createElement('span');
+        heart.className = 'heart';
+        heart.textContent = Math.random() > .5 ? '♡' : '✦';
+        heart.style.left = (8 + Math.random() * 84) + '%';
+        heart.style.animationDuration = (5 + Math.random() * 4) + 's';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 9000);
+      }, i * 240);
+    }
+  }, 2500);
+});
+</script>
+</body>
+</html>
